@@ -16,9 +16,6 @@ A project build using HTML, CSS, JAVASCRIPT, PHP, MYSQL (PDO) - { BOOTSTRAP & JQ
 
 ![bm-login](https://github.com/usercodemode/manageBrands/assets/147582140/3f2efe7d-7ab7-4fff-ad73-ddadbd1a126b)
 
-<h3>Dashboard</h3>
-
-![dashboard](https://github.com/usercodemode/manageBrands/assets/147582140/a0398b21-2041-4ff5-acb3-1f4018b96198)
 
 <h3>Post Brands</h3>
 
