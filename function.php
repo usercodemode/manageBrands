@@ -93,7 +93,7 @@ if (!empty($_POST['upload']) && $_POST['upload'] == "brandLogo") {
       }
     }
   } else {
-    echo 'invalid';
+    echo 'Something went wrong!';
   }
 }
 
@@ -101,6 +101,7 @@ if (!empty($_POST['upload']) && $_POST['upload'] == "brandLogo") {
 if (!empty($_POST['upload']) && $_POST['upload'] == "updateBrand") {
 
   $id = (int)htmlspecialchars($_POST['id']);
+
 
   if ($DB->select("select brandLogo from brands where id=:id", [':id' => (int)$id])) {
     $oldBrandLogo = $DB->showData();
@@ -116,17 +117,28 @@ if (!empty($_POST['upload']) && $_POST['upload'] == "updateBrand") {
     // can upload same image using rand function
     $final_image = time() . rand(1000, 1000000) . $img;
     // check's valid format
+    
     if (in_array($ext, $valid_extensions)) {
       $ImagePath = $path . md5($final_image) . '.' . $ext;
       if (move_uploaded_file($tmp, $ImagePath)) {
-      
-      unlink($oldBrandLogo[0]["brandLogo"]);
-    }
-    }
+        unlink($oldBrandLogo[0]["brandLogo"]); 
+       //unlink('/'.$deleteBrandLogo[0]["brandLogo"]);
 
-    //unlink('/'.$deleteBrandLogo[0]["brandLogo"]);
+      }
+      else {
+        echo "Image upload failed!";
+          return; 
+      }
+
+      }
+
+    else {
+      echo "File extension not supported";
+      return;
+    }
     
   } else {
+
     $ImagePath = ($oldBrandLogo[0]["brandLogo"]);
   }
 

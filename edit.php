@@ -178,10 +178,11 @@ if (!isset($_SESSION['id'])) {
                 data: formData,
                 success: function(data) {
                    
-                    if (data == "success") {
-                        window.location.reload(true);                    }
-                    else {
+                    if (data != "success") {
                         alert(data);
+           }
+                    else {
+                        window.location.reload(true); 
                     }
                     
                    
