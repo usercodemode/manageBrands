@@ -47,6 +47,6 @@ URL(s):
 - yoursite/login.php (For login)
 
 
-GitHUb: @usercodemode (Rohit)
+GitHUb: @usercodemode 
 
 ***
