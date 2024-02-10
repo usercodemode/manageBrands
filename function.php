@@ -129,8 +129,8 @@ if (!empty($_POST['upload']) && $_POST['upload'] == "updateBrand") {
       
       if($DB->select("select brandLogo from brands where id=:id", [':id' => (int)$id])) {
         $deleteBrandLogo = $DB->showData();
-        //print_r($deleteBrandLogo);
-        unlink('/'.$deleteBrandLogo[0]["brandLogo"]);
+        //unlink('/'.$deleteBrandLogo[0]["brandLogo"]);
+        unlink($deleteBrandLogo[0]["brandLogo"]);
       }
 
     } else {

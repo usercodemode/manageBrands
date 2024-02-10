@@ -101,10 +101,7 @@ $user = !empty($_SESSION['user']) ? $_SESSION['user'] : "";
     </main>
 
 
-    <footer class="bottom-0 text-center rounded-top">
-        <div class="p-5 bg-lightgray-2 info">...</div>
-        <div class="p-3 bg-lightgray-3 about">...</div>
-    </footer>
+    <footer></footer>
 
     <!-- Login & Register -->
 

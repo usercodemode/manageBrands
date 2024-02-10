@@ -36,7 +36,7 @@ $user = !empty($_SESSION['user']) ? $_SESSION['user'] : "";
   <title>Document</title>
 </head>
 
-<body class="bg-lightgray-1 vh-100">
+<body class="bg-lightgray-1">
   <header class="p-2 m-1 bg-white shadow rounded-bottom">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
@@ -80,7 +80,7 @@ $user = !empty($_SESSION['user']) ? $_SESSION['user'] : "";
   </header>
 
   <main>
-    <div class="p-5 bg-white rounded">
+    <div class="p-5 bg-white rounded min-vh-100">
       
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
 
@@ -110,12 +110,6 @@ $user = !empty($_SESSION['user']) ? $_SESSION['user'] : "";
     </div>
   </main>
 
-
-
-  <footer class="bottom-0 text-center rounded-top">
-    <div class="p-5 bg-lightgray-2 info">...</div>
-    <div class="p-3 bg-lightgray-3 about">...</div>
-  </footer>
 
   <script src="js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
   <script src="js/script.js" type="text/javascript" charset="utf-8"></script>

@@ -36,7 +36,7 @@ if (!isset($_SESSION['id'])) {
     <title>Document</title>
 </head>
 
-<body class="bg-lightgray-1 vh-100">
+<body class="bg-lightgray-1">
     <header class="p-2 m-1 bg-white shadow rounded-bottom">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
@@ -80,7 +80,7 @@ if (!isset($_SESSION['id'])) {
     </header>
 
     <main>
-        <div class="container p-4 mx-auto vh-100">
+        <div class="container p-4 mx-auto min-vh-100">
 
             <div class="border-2 bg-light rounded-2 float-end">
             <a class="btn btn-primary" href="logout.php">
@@ -146,15 +146,6 @@ if (!isset($_SESSION['id'])) {
        
     </main>
 
-
-
-
-
-
-    <footer class="bottom-0 text-center rounded-top">
-        <div class="p-5 bg-lightgray-2 info">...</div>
-        <div class="p-3 bg-lightgray-3 about">...</div>
-    </footer>
 
     <!-- Update Brands  -->
 

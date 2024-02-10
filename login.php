@@ -40,7 +40,7 @@ if (isset($_SESSION['id'])) {
     <title>Document</title>
 </head>
 
-<body class="bg-lightgray-1 vh-100">
+<body class="bg-lightgray-1">
     <header class="p-2 m-1 bg-white shadow rounded-bottom">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
@@ -84,7 +84,7 @@ if (isset($_SESSION['id'])) {
     </header>
 
     <main>
-        <div class="container p-4 mx-auto vh-100">
+        <div class="container p-4 mx-auto min-vh-100">
 
             <label>Email</label>
             <input class="p-2 my-2 d-block rounded-2 col-5" id="email" type="email" placeholder="Email">
