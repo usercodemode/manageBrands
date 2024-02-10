@@ -6,9 +6,6 @@ require("manageDB.php");
 
 $DB = new DBmanager();
 
-
-$user = !empty($_SESSION['user']) ? $_SESSION['user'] : "";
-
 ?>
 
 <!DOCTYPE html>
