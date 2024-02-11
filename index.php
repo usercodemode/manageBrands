@@ -89,7 +89,7 @@ $DB = new DBmanager();
         for ($i = 0; $i < count($brands); $i++) {
           
           echo '
-          <a class="my-3 hover text-decoration-none" href="' . $brands[$i]["brandSite"] . '">
+          <a class="my-3 text-decoration-none hover" href="' . $brands[$i]["brandSite"] . '">
               
               <div class="flex p-4 text-center rounded shadow justify-content-center text-dark responsive">
               <h4 class="mb-2">' . $brands[$i]["brandName"] . '</h4>
