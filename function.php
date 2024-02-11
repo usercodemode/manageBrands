@@ -99,13 +99,13 @@ if (!empty($_POST['upload']) && $_POST['upload'] == "brandLogo") {
 
 
 if (!empty($_POST['upload']) && $_POST['upload'] == "updateBrand") {
-
-  $id = (int)htmlspecialchars($_POST['id']);
-
-
-  if ($DB->select("select brandLogo from brands where id=:id", [':id' => (int)$id])) {
-    $oldBrandLogo = $DB->showData();
-  }
+$id = (int)(htmlentities($_POST['id']));
+                if($DB->select("select * from brands where id=:id", ['id' => $id])){
+                 $oldBrandLogo = $DB->showData();
+                 //echo var_dump($oldBrandLogo);
+                }
+                
+  
 
   if (!empty($_FILES['file']['name']) ) {
     $valid_extensions = array('jpeg', 'jpg', 'png', 'gif', 'bmp'); // valid extensions
@@ -138,7 +138,7 @@ if (!empty($_POST['upload']) && $_POST['upload'] == "updateBrand") {
     }
     
   } else {
-
+    //echo print_r($oldBrandLogo);
     $ImagePath = ($oldBrandLogo[0]["brandLogo"]);
   }
 
@@ -163,7 +163,7 @@ if (!empty($_POST['upload']) && $_POST['upload'] == "updateBrand") {
 
 
 if (!empty($_POST['delete']) && $_POST['delete'] == "brand") {
-
+  
   $id = (int)htmlspecialchars($_POST['id']);
   if ($DB->delete("delete from brands where id=:id", [':id' => $id])) {
     echo "success";
@@ -171,3 +171,4 @@ if (!empty($_POST['delete']) && $_POST['delete'] == "brand") {
     echo "Brand deletion unsuccessfull!";
   }
 }
+?>
