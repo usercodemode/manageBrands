@@ -97,15 +97,20 @@ if (!isset($_SESSION['id'])) {
                     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
                     <div class="my-2 border-2 brand col-xs-12 col-sm">
                         <div class="bg-white rounded shadow h-100 hover " href="#"><img src="' . $brand[0]["brandLogo"] . '" class="img-thumbnail" />
+                         
+                        </div>
                         </div>
                     </div>
+                       <h3 class="inline-block my-2">'.$brand[0]["brandName"].'</h3>
+                     <button class="btn btn-danger fw-bold" id="deleteBrand" onclick="deleteBrand()">DELETE</button>
 
-                    </div>
+
+                    
 
                     <div class="mx-auto my-5 w-75">
 
                             
-                    <form method="post" onsubmit="return false" id="data" enctype="multipart/form-data">
+                    <form method="post" class="inline" onsubmit="return false" id="data" enctype="multipart/form-data">
                             <div class="mb-3 col-sm-6">
                                 <label for="newBrandName" class="col-form-label">Brand Name:</label>
                                 <input type="text" class="form-control" id="brandName" name="brandName" placeholder="Brand Name" value="' . $brand[0]["brandName"] . '">
@@ -125,12 +130,12 @@ if (!isset($_SESSION['id'])) {
 
                             <button class="btn btn-primary fw-bold" id="updateBrand">UPDATE</button>
 
-                            <button class="btn btn-danger fw-bold" onclick="deleteBrand()">DELETE</button>
+                           
 
                         </div>
                     </form>
-
-                    
+  
+                      
                     
                     
                     ';
@@ -195,17 +200,18 @@ if (!isset($_SESSION['id'])) {
 
 
         function deleteBrand() {
-            var id = <?php echo $brand[0]["id"] ?>;
+            var id = '<?php echo $brand[0]["id"]; ?>';
+           
             if (id != "") {
 
                 $.post("function.php", {
-                        delete: "brand",
-                        id: id,
+                        delete: 'brand',
+                        id: id
                     },
                     function(data, status) {
 
                     if (data == "success") {
-                        window.location.reload(true);                    }
+                        window.location.reload(true); }
                     else {
                         alert(data);
                     }
