@@ -6,6 +6,8 @@ require('manageDB.php');
 
 $DB = new DBmanager();
 
+// Login
+
 if (!empty($_POST['account']) && $_POST['account'] == "login" && !empty($_POST['email']) && !empty($_POST['password'])) {
 
   $email = htmlspecialchars($_POST['email']);
@@ -28,6 +30,7 @@ if (!empty($_POST['account']) && $_POST['account'] == "login" && !empty($_POST['
   }
 }
 
+// Registration 
 
 if (!empty($_POST['account']) && $_POST['account'] == "register" && !empty($_POST['email']) && !empty($_POST['name']) && !empty($_POST['password'])) {
   //echo "register";
@@ -56,15 +59,7 @@ if (!empty($_POST['account']) && $_POST['account'] == "register" && !empty($_POS
   }
 }
 
-
-/* Reload */
-
-if (!empty($_POST['reload']) && $_POST['reload'] == "reload") {
-  $DB->select("select * from chat", "");
-
-  $data = $DB->showData();
-  echo count($data);
-}
+// Post Brands
 
 if (!empty($_POST['upload']) && $_POST['upload'] == "brandLogo") {
   $valid_extensions = array('jpeg', 'jpg', 'png', 'gif', 'bmp', 'pdf', 'doc', 'ppt'); // valid extensions
@@ -97,6 +92,7 @@ if (!empty($_POST['upload']) && $_POST['upload'] == "brandLogo") {
   }
 }
 
+// Update Brands
 
 if (!empty($_POST['upload']) && $_POST['upload'] == "updateBrand") {
 $id = (int)(htmlentities($_POST['id']));
@@ -159,8 +155,7 @@ $id = (int)(htmlentities($_POST['id']));
   }
 }
 
-
-
+// Delete Brands
 
 if (!empty($_POST['delete']) && $_POST['delete'] == "brand") {
   
