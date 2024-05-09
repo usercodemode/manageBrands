@@ -95,15 +95,15 @@ if (!empty($_POST['upload']) && $_POST['upload'] == "brandLogo") {
 // Update Brands
 
 if (!empty($_POST['upload']) && $_POST['upload'] == "updateBrand") {
-$id = (int)(htmlentities($_POST['id']));
-                if($DB->select("select * from brands where id=:id", ['id' => $id])){
-                 $oldBrandLogo = $DB->showData();
-                 //echo var_dump($oldBrandLogo);
-                }
-                
-  
+  $id = (int)(htmlentities($_POST['id']));
+  if ($DB->select("select * from brands where id=:id", ['id' => $id])) {
+    $oldBrandLogo = $DB->showData();
+    //echo var_dump($oldBrandLogo);
+  }
 
-  if (!empty($_FILES['file']['name']) ) {
+
+
+  if (!empty($_FILES['file']['name'])) {
     $valid_extensions = array('jpeg', 'jpg', 'png', 'gif', 'bmp'); // valid extensions
     $path = 'uploads/'; // upload directory
     $img = $_FILES['file']['name'];
@@ -113,26 +113,22 @@ $id = (int)(htmlentities($_POST['id']));
     // can upload same image using rand function
     $final_image = time() . rand(1000, 1000000) . $img;
     // check's valid format
-    
+
     if (in_array($ext, $valid_extensions)) {
       $ImagePath = $path . md5($final_image) . '.' . $ext;
       if (move_uploaded_file($tmp, $ImagePath)) {
-        unlink($oldBrandLogo[0]["brandLogo"]); 
-       //unlink('/'.$deleteBrandLogo[0]["brandLogo"]);
+        unlink($oldBrandLogo[0]["brandLogo"]);
+        // var_dump($oldBrandLogo[0]["brandLogo"]);
+        //unlink('/'.$deleteBrandLogo[0]["brandLogo"]);
 
-      }
-      else {
+      } else {
         echo "Image upload failed!";
-          return; 
+        return;
       }
-
-      }
-
-    else {
+    } else {
       echo "File extension not supported";
       return;
     }
-    
   } else {
     //echo print_r($oldBrandLogo);
     $ImagePath = ($oldBrandLogo[0]["brandLogo"]);
@@ -142,7 +138,7 @@ $id = (int)(htmlentities($_POST['id']));
   $brandName = htmlspecialchars($_POST['brandName']);
   $brandSite = htmlspecialchars($_POST['brandSite']);
 
- 
+
 
   if ($DB->update("UPDATE brands SET brandName=:brandName, brandLogo=:brandLogo, brandSite=:brandSite, user_id=:user_id 
     WHERE id=:id", [':brandName' => $brandName, ':brandLogo' => $ImagePath, ':brandSite' => $brandSite, ':user_id' => (int)$_SESSION["id"], ':id' => $id])) {
@@ -158,12 +154,16 @@ $id = (int)(htmlentities($_POST['id']));
 // Delete Brands
 
 if (!empty($_POST['delete']) && $_POST['delete'] == "brand") {
-  
+
   $id = (int)htmlspecialchars($_POST['id']);
+  if ($DB->select("select * from brands where id=:id", [':id' => $id])) {
+    $oldBrandLogo = $DB->showData();
+  }
   if ($DB->delete("delete from brands where id=:id", [':id' => $id])) {
+    unlink($oldBrandLogo[0]["brandLogo"]);
+    var_dump($oldBrandLogo[0]["brandLogo"]);
     echo "success";
   } else {
     echo "Brand deletion unsuccessfull!";
   }
 }
-?>
